@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SST Moderno - Sistema de Saúde e Segurança</title>
+    <link rel="stylesheet" href="../views/style.css">
+       
+    
+</head>
+<body>
+
+    <aside>
+        <h2>SST Ocupacional</h2>
+        <nav id="menu">
+            <button onclick="app.mudarModulo('dashboard')" id="btn-dashboard" class="active">Dashboard Geral</button>
+            <button onclick="app.mudarModulo('colaboradores')" id="btn-colaboradores">Colaboradores</button>
+            <button onclick="app.mudarModulo('setores')" id="btn-setores">Setores</button>
+            <button onclick="app.mudarModulo('cargos')" id="btn-cargos">Cargos</button>
+            <button onclick="app.mudarModulo('epis')" id="btn-epis">Controle de EPIs</button>
+            <button onclick="app.mudarModulo('entregas')" id="btn-entregas">Entrega de EPI</button>
+            <button onclick="app.mudarModulo('exames')" id="btn-exames">Exames Médicos</button>
+            <button onclick="app.mudarModulo('treinamentos')" id="btn-treinamentos">Treinamentos</button>
+            <button onclick="app.mudarModulo('inspecoes')" id="btn-inspecoes">Inspeções</button>
+            <button onclick="app.mudarModulo('acidentes')" id="btn-acidentes">Registro de Acidentes</button>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <h1 id="page-title">Dashboard Geral</h1>
+            <span id="current-date">15/06/2026</span>
+        </header>
+
+        <div id="view-dashboard" class="view">
+            <div class="card-dashboard">
+                <div class="card">
+                    <h3>Colaboradores</h3>
+                    <p id="dash-colab">0</p>
+                </div>
+                <div class="card danger">
+                    <h3>Acidentes</h3>
+                    <p id="dash-acidentes">0</p>
+                </div>
+                <div class="card warning">
+                    <h3>EPIs Entregues</h3>
+                    <p id="dash-epis">0</p>
+                </div>
+                <div class="card">
+                    <h3>Inspeções Realizadas</h3>
+                    <p id="dash-inspecoes">0</p>
+                </div>
+            </div>
+            
+            <h3>Resumo de Alertas Críticos</h3>
+            <div class="table-container" style="margin-top:15px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Módulo Alvo</th>
+                            <th>Descrição do Status Técnico</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dash-alertas-corpo">
+                        <tr>
+                            <td colspan="2" style="text-align: center; color: gray;">Nenhum alerta crítico no momento.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="view-crud" class="view hidden">
+            <div class="form-section">
+                <h3 id="form-title">Cadastrar Novo</h3>
+                <form id="dinamic-form" onsubmit="app.handleFormSubmit(event)">
+                    <input type="hidden" id="edit-id" value="">
+                    <div id="inputs-container" class="grid-inputs">
+                        </div>
+                    <button type="submit" class="btn-submit">Salvar Registro</button>
+                    <button type="button" onclick="app.limparFormulario()" class="btn-submit" style="background-color: var(--dark);">Limpar</button>
+                </form>
+            </div>
+
+            <h3>Registros Cadastrados</h3>
+            <div class="table-container" style="margin-top: 15px;">
+                <table id="data-table">
+                    </table>
+            </div>
+        </div>
+    </main>
+
+   <script src="modells/firjan-corp.js"></script>
+
+</body>
+</html>
